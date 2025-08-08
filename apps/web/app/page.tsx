@@ -1,6 +1,7 @@
+import {add} from '@workspace/math/add'
 const WebHomePage = () => {
   return (
-    <div>WebHomePage</div>
+    <div>{add(15,25)}</div>
   )
 }
 export default WebHomePage
