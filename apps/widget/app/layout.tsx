@@ -14,7 +14,7 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
-const RootLayout=({
+const WidgetLayout=({
   children,
 }: Readonly<{
   children: ReactNode
@@ -29,4 +29,4 @@ const RootLayout=({
     </html>
   )
 }
-export default RootLayout
+export default WidgetLayout;
