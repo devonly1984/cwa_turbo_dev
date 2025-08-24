@@ -1,22 +1,23 @@
-"use client"
-import {useMutation, useQuery} from 'convex/react';
-import { api } from '@workspace/backend/convex/_generated/api';
-import { Button } from '@workspace/ui/components/button';
+"use client";
 
-
-
-const WidgetHomePage = () => {
-  const users = useQuery(api.queries.users.getMany);
-  const addUser = useMutation(api.mutations.users.add);
-  console.log(users);
-  return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <p>apps/widget</p>
-      <Button onClick={() => addUser()}>Add User</Button>
-      <div className="max-w-sm mx-auto w-full">
-        {JSON.stringify(users)}
-      </div>
-    </div>
-  );
+import WidgetView from "@/components/widget/views/WidgetView";
+import { useVapi } from "@/hooks/useVapi";
+import { Button } from "@workspace/ui/components/button";
+import { use } from "react";
+interface Props {
+  searchParams: Promise<{ organizationId: string }>;
 }
-export default WidgetHomePage
+const WidgetHomePage = ({ searchParams }: Props) => {
+  const { organizationId } = use(searchParams);
+  const {
+    transcript,
+    isConnected,
+    isConnecting,
+    isSpeaking,
+    startCall,
+    endCall,
+  } = useVapi();
+
+  return <WidgetView organizationId={organizationId} />;
+};
+export default WidgetHomePage;

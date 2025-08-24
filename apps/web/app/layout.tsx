@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "@workspace/ui/globals.css"
 import { Providers } from "@/components/providers"
 import { ReactNode } from "react"
+import AuthGuard from "@/components/auth/guards/AuthGuard"
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -24,9 +25,11 @@ const RootLayout=({
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <AuthGuard>{children}</AuthGuard>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
 export default RootLayout
