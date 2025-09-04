@@ -13,7 +13,8 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
-const  RootLayout=({
+
+const RootLayout=({
   children,
 }: Readonly<{
   children: ReactNode
