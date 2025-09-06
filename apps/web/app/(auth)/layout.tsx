@@ -1,5 +1,5 @@
 
-import { LayoutProps } from "../types";
+import { LayoutProps } from "../../types";
 import AuthGuard from "@/components/auth/guards/AuthGuard";
 
 const Layout = ({ children }: LayoutProps) => {

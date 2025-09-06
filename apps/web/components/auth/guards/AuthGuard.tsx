@@ -2,7 +2,7 @@
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import AuthLayout from "../layouts/AuthLayout";
 import SignInView from "../views/SignInView";
-import { LayoutProps } from "@/app/types";
+import { LayoutProps } from "@/types";
 const AuthGuard = ({ children }: LayoutProps) => {
   return (
     <>

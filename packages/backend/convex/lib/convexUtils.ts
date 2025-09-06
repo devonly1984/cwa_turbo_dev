@@ -10,4 +10,12 @@ export const getIdentity = async(ctx:ActionCtx|QueryCtx|MutationCtx)=>{
             message: "Not Authenticated"
         })
     }
+    const orgId = identity.orgId as string;
+    if (!orgId) {
+        throw new ConvexError({
+          code: "NOT_FOUND",
+          message: "Organization Id not found",
+        });
+    }
+    return { orgId };
 }
