@@ -13,6 +13,9 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as lib_convexUtils from "../lib/convexUtils.js";
+import type * as public_mutations_users from "../public/mutations/users.js";
+import type * as public_queries_users from "../public/queries/users.js";
 import type * as tables_index from "../tables/index.js";
 import type * as tables_users from "../tables/users.js";
 
@@ -25,6 +28,9 @@ import type * as tables_users from "../tables/users.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "lib/convexUtils": typeof lib_convexUtils;
+  "public/mutations/users": typeof public_mutations_users;
+  "public/queries/users": typeof public_queries_users;
   "tables/index": typeof tables_index;
   "tables/users": typeof tables_users;
 }>;
