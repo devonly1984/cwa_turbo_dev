@@ -2,35 +2,22 @@
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from "@workspace/ui/components/sidebar";
-import { cn } from "@workspace/ui/lib/utils";
 import {
-  accountItems,
-  configurationItems,
-  customerSupportItems,
-} from "@/constants";
+  AccountGroup,
+  ConfigurationGroup,
+  CustomerSupportGroup,
+} from "../sidebarGroups";
 const DashboardSidebar = () => {
-  const pathname = usePathname();
-  const isActive = (url: string) => {
-    if (url === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(url);
-  };
   return (
     <Sidebar className="group" collapsible="icon">
       <SidebarHeader>
@@ -61,71 +48,11 @@ const DashboardSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         {/**Customer Support */}
-        <SidebarGroup>
-          <SidebarGroupLabel>Customer Support</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {customerSupportItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    tooltip={item.title}
-                  >
-                    <Link href={item.url}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <CustomerSupportGroup />
         {/**Configuration */}
-        <SidebarGroup>
-          <SidebarGroupLabel>Configuration</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {configurationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    tooltip={item.title}
-                  >
-                    <Link href={item.url}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <ConfigurationGroup />
         {/**Account */}
-        <SidebarGroup>
-          <SidebarGroupLabel>Configuration</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {accountItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    tooltip={item.title}
-                  >
-                    <Link href={item.url}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <AccountGroup />
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
