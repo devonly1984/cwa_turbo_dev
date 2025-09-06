@@ -21,10 +21,14 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@sentry/cli",
       "@tailwindcss/oxide",
       "core-js-pure",
       "esbuild",
       "sharp"
+    ],
+    "ignoredBuiltDependencies": [
+      "@sentry/cli"
     ]
   }
 }
