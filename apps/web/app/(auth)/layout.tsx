@@ -1,10 +1,8 @@
+
 import { LayoutProps } from "../types";
+import AuthGuard from "@/components/auth/guards/AuthGuard";
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <div className="min-h-screen min-w-scree h-full flex flex-col items-center justify-center">
-      {children}
-    </div>
-  );
+  return <AuthGuard>{children}</AuthGuard>;
 };
 export default Layout;
