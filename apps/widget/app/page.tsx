@@ -1,28 +1,13 @@
 "use client";
+import WidgetView from "@/components/widget/views/WidgetView";
+import { use } from "react";
 
-import { useVapi } from "@/hooks/useVapi";
-import { Button } from "@workspace/ui/components/button";
+interface WidgetPageProps {
+  searchParams: Promise<{organizationId:string}>
+}
 
-const WidgetHomePage = () => {
-  const {
-    isSpeaking,
-    isConnected,
-    isConnecting,
-    transcript,
-    startCall,
-    endCall,
-  } = useVapi();
-  return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <Button onClick={() => startCall()}> Start Call</Button>
-      <Button onClick={() => endCall()} variant={"destructive"}>
-        End Call
-      </Button>
-      <p>isConnected: {`${isConnected}`}</p>
-      <p>isConnecting: {`${isConnecting}`}</p>
-      <p>isSpeaking: {`${isSpeaking}`}</p>
-      <p>{JSON.stringify(transcript, null, 2)}</p>
-    </div>
-  );
+const WidgetHomePage = ({searchParams}:WidgetPageProps) => {
+ const { organizationId } = use(searchParams);
+return <WidgetView organizationId={organizationId} />;
 };
 export default WidgetHomePage;
