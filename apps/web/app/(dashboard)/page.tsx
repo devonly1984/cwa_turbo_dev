@@ -4,7 +4,7 @@ import { useMutation } from "convex/react";
 
 import { Button } from "@workspace/ui/components/button";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { api } from "../../../../packages/backend/convex/_generated/api";
+import { api } from "@workspace/backend/convex/_generated/api";
 const WebPage = () => {
   const addUser = useMutation(api.public.mutations.users.add);
   return (
