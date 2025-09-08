@@ -6,9 +6,9 @@ import { atomFamily, atomWithStorage } from "jotai/utils";
 
 //Widget State Atoms
 
-export const screenAtom = atom<WidgetScreen>("auth");
+export const screenAtom = atom<WidgetScreen>("loading");
 export const organizationIdAtom = atom<string | null>(null);
-
+export const conversationIdAtom = atom<Id<'conversations'> | null>(null);
 //Else 
 export const contactSessionIdAtomFamily = atomFamily(
   (organizationId: string) =>

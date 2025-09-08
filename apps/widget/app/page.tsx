@@ -7,7 +7,8 @@ interface WidgetPageProps {
 }
 
 const WidgetHomePage = ({searchParams}:WidgetPageProps) => {
- const { organizationId } = use(searchParams);
-return <WidgetView organizationId={organizationId} />;
+  const { organizationId } = use(searchParams);
+
+  return <WidgetView organizationId={organizationId} />;
 };
 export default WidgetHomePage;

@@ -17,7 +17,7 @@ import { useMutation } from "convex/react";
 import { api } from "../../../../../packages/backend/convex/_generated/api";
 import { Doc, Id } from "../../../../../packages/backend/convex/_generated/dataModel";
 import { useSetAtom } from "jotai";
-import { contactSessionIdAtomFamily } from "../store/widgetAtom";
+import { contactSessionIdAtomFamily, screenAtom } from "../store/widgetAtom";
 interface WidgetFormProps {
   organizationId:string|null
 }
@@ -25,6 +25,7 @@ const WidgetForm = ({ organizationId }: WidgetFormProps) => {
   const setContactSessionId = useSetAtom(
     contactSessionIdAtomFamily(organizationId || "")
   );
+  const setScreen = useSetAtom(screenAtom);
   const authForm = useForm<WidgetFormSchema>({
     resolver: zodResolver(widgetFormSchema),
     defaultValues: {
@@ -61,6 +62,7 @@ const WidgetForm = ({ organizationId }: WidgetFormProps) => {
         metadata,
       });
    setContactSessionId(contactSessionId);
+   setScreen('chat');
   };
   return (
     <Form {...authForm}>
