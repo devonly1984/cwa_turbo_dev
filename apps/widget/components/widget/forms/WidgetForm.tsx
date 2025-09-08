@@ -22,6 +22,7 @@ interface WidgetFormProps {
   organizationId:string|null
 }
 const WidgetForm = ({ organizationId }: WidgetFormProps) => {
+  
   const setContactSessionId = useSetAtom(
     contactSessionIdAtomFamily(organizationId || "")
   );
@@ -62,7 +63,7 @@ const WidgetForm = ({ organizationId }: WidgetFormProps) => {
         metadata,
       });
    setContactSessionId(contactSessionId);
-   setScreen('chat');
+   setScreen("selection");
   };
   return (
     <Form {...authForm}>
