@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import { InitStep } from "@/types";
 import { useAction, useMutation } from "convex/react";
 import { api } from "@workspace/backend/convex/_generated/api";
-import { Id } from "@workspace/backend/convex/_generated/dataModel";
 
 interface WidgetLoadingScreenProps {
   organizationId: string | null;

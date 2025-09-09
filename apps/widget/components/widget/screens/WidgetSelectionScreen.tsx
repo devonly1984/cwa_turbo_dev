@@ -1,7 +1,7 @@
 "use client";
 
 import {  ChevronRight,  MessageSquareText } from "lucide-react";
-import { WidgetHeader } from "../layout";
+import { WidgetFooter, WidgetHeader } from "../layout";
 import { Button } from "@workspace/ui/components/button";
 import { useAtomValue, useSetAtom } from "jotai";
 import { contactSessionIdAtomFamily, conversationIdAtom, errorMessageAtom, organizationIdAtom, screenAtom } from "../store/widgetAtom";
@@ -43,7 +43,7 @@ const WidgetSelectionScreen = () => {
       );
     try {
    
-      console.log("Created Conversation", conversationId);
+     
       setConversationId(conversationId);
       setScreen("chat");
     } catch {
@@ -74,6 +74,7 @@ const WidgetSelectionScreen = () => {
           <ChevronRight />
         </Button>
       </div>
+      <WidgetFooter />
     </>
   );
 }

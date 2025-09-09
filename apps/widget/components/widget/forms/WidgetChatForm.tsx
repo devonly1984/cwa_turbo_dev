@@ -84,7 +84,6 @@ const WidgetChatForm = ({
                   imageUrl="/logo.svg"
                   seed="assistant"
                   size={32}
-                  badgeImageUrl="/logo.svg"
                 />
               )}
             </AIMessage>
