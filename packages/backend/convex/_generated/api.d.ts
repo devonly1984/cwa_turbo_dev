@@ -10,6 +10,7 @@
 
 import type * as constants_index from "../constants/index.js";
 import type * as lib_convexUtils from "../lib/convexUtils.js";
+import type * as private_mutations_conversations from "../private/mutations/conversations.js";
 import type * as private_mutations_messages from "../private/mutations/messages.js";
 import type * as private_queries_conversations from "../private/queries/conversations.js";
 import type * as private_queries_messages from "../private/queries/messages.js";
@@ -46,6 +47,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   "constants/index": typeof constants_index;
   "lib/convexUtils": typeof lib_convexUtils;
+  "private/mutations/conversations": typeof private_mutations_conversations;
   "private/mutations/messages": typeof private_mutations_messages;
   "private/queries/conversations": typeof private_queries_conversations;
   "private/queries/messages": typeof private_queries_messages;

@@ -31,7 +31,7 @@ import { Wand2 } from "lucide-react";
 import { useMutation } from "convex/react";
 
 interface ConversationIdFormProps {
-  conversation:any;
+  conversation: any;
 }
 const ConversationIdForm = ({ conversation }: ConversationIdFormProps) => {
   const conversationIdForm = useForm<ConversationIdFormSchema>({
@@ -48,15 +48,15 @@ const ConversationIdForm = ({ conversation }: ConversationIdFormProps) => {
   const createMessage = useMutation(api.private.mutations.messages.create);
 
   const onSubmit = async (values: ConversationIdFormSchema) => {
-   try {
-     await createMessage({
-       conversationId: conversation._id,
-       prompt: values.message,
-     });
-     conversationIdForm.reset();
-   } catch (error) {
-    console.error(error);
-   }
+    try {
+      await createMessage({
+        conversationId: conversation._id,
+        prompt: values.message,
+      });
+      conversationIdForm.reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>
