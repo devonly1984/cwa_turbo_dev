@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import "@workspace/ui/globals.css"
 import { Providers } from "@/components/providers"
+import { ReactNode } from "react"
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -13,11 +14,11 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
-export default function RootLayout({
+const RootLayout=({
   children,
 }: Readonly<{
-  children: React.ReactNode
-}>) {
+  children: ReactNode
+}>) =>{
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -28,3 +29,4 @@ export default function RootLayout({
     </html>
   )
 }
+export default RootLayout;
