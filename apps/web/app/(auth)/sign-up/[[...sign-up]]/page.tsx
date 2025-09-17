@@ -1,4 +1,6 @@
+import SignUpView from "@/components/auth/views/SignUpView"
+
 const SignUpPage = () => {
-  return <div>SignUpPage</div>;
+  return <SignUpView />;
 };
 export default SignUpPage;

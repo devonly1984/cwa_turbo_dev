@@ -1,6 +1,7 @@
+import { SignIn } from "@clerk/nextjs";
+
+
 const SignInView = () => {
-  return (
-    <div>SignInView</div>
-  )
-}
-export default SignInView
+  return <SignIn routing="hash" />;
+};
+export default SignInView;

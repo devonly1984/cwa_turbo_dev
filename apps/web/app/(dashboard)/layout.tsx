@@ -1,7 +1,12 @@
-import AuthLayout from "@/components/auth/layouts/AuthLayout";
+import Guards from "@/components/auth/Guards";
+
 import { LayoutProps } from "@/types";
 
 const Layout = ({ children }: LayoutProps) => {
-  return <AuthLayout>{children}</AuthLayout>;
+  return (
+    <Guards>
+      {children}
+    </Guards>
+  );
 };
 export default Layout;

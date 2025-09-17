@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "@workspace/ui/globals.css"
 import { Providers } from "@/components/providers"
 import { ReactNode } from "react"
+import AuthGuard from "@/components/auth/guards/AuthGuard";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ const RootLayout=({
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
         <ClerkProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <AuthGuard>{children}</AuthGuard>
+          </Providers>
         </ClerkProvider>
       </body>
     </html>
