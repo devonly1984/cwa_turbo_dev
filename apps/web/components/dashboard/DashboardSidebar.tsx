@@ -27,7 +27,9 @@ const DashboardSidebar = () => {
               <OrganizationSwitcher
                 hidePersonal
                 skipInvitationScreen
-                appearance={{}}
+                appearance={{
+                    
+                }}
               />
             </SidebarMenuButton>
           </SidebarMenuItem>
