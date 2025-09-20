@@ -1,5 +1,6 @@
 "use client";
 import { accountItems  } from "@/constants";
+import { SidebarGroupsProps } from "@/types";
 import {
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -10,14 +11,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const AccountGroup = () => {
-  const pathname = usePathname();
-  const isActive = (url: string) => {
-    if (url === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(url);
-  };
+const AccountGroup = ({ pathname, isActive }: SidebarGroupsProps) => {
   return (
     <>
       <SidebarGroupLabel>Account</SidebarGroupLabel>

@@ -1,5 +1,6 @@
 "use client";
 import { customerSupportItems } from "@/constants";
+import { SidebarGroupsProps } from "@/types";
 import {
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -8,16 +9,10 @@ import {
   SidebarMenuItem,
 } from "@workspace/ui/components/sidebar";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const CustomerSupportGroup = () => {
-  const pathname = usePathname();
-  const isActive = (url: string) => {
-    if (url === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(url);
-  };
+
+const CustomerSupportGroup = ({isActive}:SidebarGroupsProps) => {
+
   return (
     <>
       <SidebarGroupLabel>Customer Support</SidebarGroupLabel>
