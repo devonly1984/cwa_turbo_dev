@@ -1,12 +1,8 @@
-import Guards from "@/components/auth/Guards";
+import DashboardLayout from "@/components/dashboard/layouts/DashboardLayout";
 
 import { LayoutProps } from "@/types";
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <Guards>
-      {children}
-    </Guards>
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 };
 export default Layout;
