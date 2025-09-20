@@ -31,10 +31,9 @@ export const configurationItems = [
   },
 ];
 export const accountItems = [
-    {
-        title: "Plans & Billing",
-        url: "/billing",
-        icon: CreditCard
-
-    }
-]
+  {
+    title: "Plans & Billing",
+    url: "/billing",
+    icon: CreditCard,
+  },
+];
