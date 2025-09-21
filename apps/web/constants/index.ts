@@ -1,4 +1,11 @@
-import { CreditCard, Inbox, LayoutDashboard, LibraryBig, Mic, Palette } from "lucide-react";
+import {
+  CreditCard,
+  Inbox,
+  LayoutDashboard,
+  LibraryBig,
+  Mic,
+  Palette,
+} from "lucide-react";
 
 export const customerSupportItems = [
   {
@@ -11,7 +18,6 @@ export const customerSupportItems = [
     url: "/files",
     icon: LibraryBig,
   },
-  
 ];
 export const configurationItems = [
   {
@@ -37,3 +43,4 @@ export const accountItems = [
     icon: CreditCard,
   },
 ];
+export const SIDEBAR_COOKIE_NAME = "sidebar_state";
