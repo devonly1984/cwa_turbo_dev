@@ -6,6 +6,7 @@ import { contactSessionIdAtomFamily, conversationIdAtom, organizationIdAtom, scr
 import { useAtomValue, useSetAtom } from "jotai";
 import { useQuery } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
+import WidgetChatScreenForm from "../forms/WidgetChatScreenForm";
 
 const WidgetChatScreen = () => {
   //setters
@@ -44,7 +45,10 @@ const WidgetChatScreen = () => {
         </Button>
       </WidgetHeader>
       <div className="flex flex-1 flex-col  gap-y-4 p-4 ">
-        {JSON.stringify(conversation)}
+        <WidgetChatScreenForm
+          conversation={conversation}
+          contactSessionId={contactSessionId}
+        />
       </div>
     </>
   );

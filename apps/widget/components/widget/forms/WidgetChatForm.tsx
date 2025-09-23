@@ -15,13 +15,17 @@ import { useMutation } from "convex/react";
 import {api} from '@workspace/backend/_generated/api'
 import { Doc, Id } from "@workspace/backend/_generated/dataModel";
 import { useAtomValue, useSetAtom } from "jotai";
-import { contactSessionIdAtomFamily, organizationIdAtom } from "@/store/widgetAtoms";
+import { contactSessionIdAtomFamily, organizationIdAtom, screenAtom } from "@/store/widgetAtoms";
 
 const WidgetChatForm = () => {
-    const organizationId = useAtomValue(organizationIdAtom);
+  //ATOMS
+  const organizationId = useAtomValue(organizationIdAtom);
   const setContactSessionId = useSetAtom(
     contactSessionIdAtomFamily(organizationId || "")
   );
+//SETTERS
+const setScreen = useSetAtom(screenAtom);
+//Mutation
     const createContactSession = useMutation(
       api.public.mutations.contactSessions.create
     );
@@ -57,7 +61,9 @@ const WidgetChatForm = () => {
           metadata,
           organizationId,
         });
+      
       setContactSessionId(contactSessionId);
+      setScreen("selection");
     };
   return (
     <Form {...chatForm}>
