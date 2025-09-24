@@ -25,8 +25,10 @@ import { ChatScreenFormSchema, chatScreenFormSchema } from "@/lib/schemas/chatSc
 import { useAction } from "convex/react";
 import { Form, FormField } from "@workspace/ui/components/form";
 import { useInfiniteScroll } from "@workspace/ui/hooks/useInfiniteScroll";
-import InfiniteScrollTrigger from "@workspace/ui/components/shared/InfiniteScrollTrigger";
-import DiceBearAvatar from "@workspace/ui/components/shared/DiceBearAvatar";
+import {
+  InfiniteScrollTrigger,
+  DiceBearAvatar,
+} from "@workspace/ui/components/shared";
 interface WidgetChatScreenFormProps {
   conversation:
     | {
