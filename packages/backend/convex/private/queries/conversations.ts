@@ -19,43 +19,45 @@ export const getMany = query({
     const { orgId } = await getIdentity(ctx);
     let conversations: PaginationResult<Doc<"conversations">>;
     if (args.status) {
-        conversations = await ctx.db
-          .query("conversations")
-          .withIndex("by_status_and_organization_id", (q) =>
-            q
-              .eq("status", args.status as Doc<"conversations">["status"])
-              .eq("organizationId", orgId)
-          )
-          .order("desc")
-          .paginate(args.paginationOpts);
+      conversations = await ctx.db
+        .query("conversations")
+        .withIndex("by_status_and_organization_id", (q) =>
+          q
+            .eq("status", args.status as Doc<"conversations">["status"])
+            .eq("organizationId", orgId)
+        )
+        .order("desc")
+        .paginate(args.paginationOpts);
     } else {
-        conversations = await ctx.db
-          .query("conversations")
-          .withIndex("by_organization_id", (q) =>
-            q.eq("organizationId", orgId)
-          );
+      conversations = await ctx.db
+        .query("conversations")
+        .withIndex("by_organization_id", (q) =>
+          q.eq("organizationId", orgId)
+        );
     }
     const conversationsWithAdditionalData = await Promise.all(
-        conversations.page.map(async(conversation)=>{
-          let lastMessage: MessageDoc | null = null;
-          const contactSession = await ctx.db.get(conversation.contactSessionId)
-          if (!contactSession) {
-            return null;
-          }
-          const messages = await supportAgent.listMessages(ctx, {
-            threadId: conversation.threadId,
-            paginationOpts: { numItems: 1, cursor: null },
-          });
-          if (messages.page.length > 0) {
-            lastMessage = messages.page[0] ?? null;
-          }
-          return {
-            ...conversation,
-            lastMessage,
-            contactSession,
-          };
-        })
-    )
+      conversations.page.map(async (conversation) => {
+        let lastMessage: MessageDoc | null = null;
+        const contactSession = await ctx.db.get(
+          conversation.contactSessionId
+        );
+        if (!contactSession) {
+          return null;
+        }
+        const messages = await supportAgent.listMessages(ctx, {
+          threadId: conversation.threadId,
+          paginationOpts: { numItems: 1, cursor: null },
+        });
+        if (messages.page.length > 0) {
+          lastMessage = messages.page[0] ?? null;
+        }
+        return {
+          ...conversation,
+          lastMessage,
+          contactSession,
+        };
+      })
+    );
     const validConversations = conversationsWithAdditionalData.filter(
       (conv): conv is NonNullable<typeof conv> => conv !== null
     );

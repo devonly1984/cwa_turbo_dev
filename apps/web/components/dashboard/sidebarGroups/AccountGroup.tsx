@@ -10,9 +10,9 @@ import {
 } from "@workspace/ui/components/sidebar";
 import { cn } from "@workspace/ui/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const AccountGroup = ({ pathname, isActive }: SidebarGroupsProps) => {
+
+const AccountGroup = ({  isActive }: SidebarGroupsProps) => {
   return (
     <>
       <SidebarGroupLabel>Account</SidebarGroupLabel>

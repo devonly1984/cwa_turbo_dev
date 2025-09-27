@@ -52,9 +52,9 @@ const DashboardSidebar = () => {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <CustomerSupportGroup pathname={pathname} isActive={isActive} />
-        <CustomizationGroup pathname={pathname} isActive={isActive} />
-        <AccountGroup pathname={pathname} isActive={isActive} />
+        <CustomerSupportGroup  isActive={isActive} />
+        <CustomizationGroup  isActive={isActive} />
+        <AccountGroup  isActive={isActive} />
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

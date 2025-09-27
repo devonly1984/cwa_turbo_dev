@@ -4,7 +4,7 @@ import { LayoutProps } from "@/types";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import {useAuth} from '@clerk/nextjs'
-
+import { Provider as JotaiProvider } from "jotai";
 
 export const Providers = ({ children }: LayoutProps) => {
   const client = new ConvexReactClient(
@@ -12,7 +12,7 @@ export const Providers = ({ children }: LayoutProps) => {
   );
   return (
     <ConvexProviderWithClerk client={client} useAuth={useAuth}>
-      {children}
+      <JotaiProvider>{children}</JotaiProvider>
     </ConvexProviderWithClerk>
   );
 };

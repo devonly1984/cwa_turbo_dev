@@ -11,13 +11,26 @@ import {
   ArrowRight,
   ArrowUp,
   Check,
-  CornerUpLeft,
+ 
 } from "lucide-react";
 import ConversationScrollArea from "./ConversationScrollArea";
+
+import { statusFilterAtom } from "@/constants/webAtoms";
+import { useAtomValue, useSetAtom } from "jotai";
+import { Doc } from "@workspace/backend/_generated/dataModel";
 const ConversationSelect = () => {
+  const statusFilter = useAtomValue(statusFilterAtom);
+  const setStatusFilter = useSetAtom(statusFilterAtom)
+
   return (
     <>
-      <Select defaultValue="all" onValueChange={() => {}} value="all">
+      <Select
+        defaultValue="all"
+        onValueChange={(value) => {
+          setStatusFilter(value as Doc<"conversations">["status"] | "all");
+        }}
+        value={statusFilter}
+      >
         <SelectTrigger className="h-8 border-none px-1.5 shadow-none ring-0 hover:bg-accent hover:text-accent-foreground focus-visible:ring-0">
           <SelectValue placeholder="Filter" />
         </SelectTrigger>
@@ -48,7 +61,10 @@ const ConversationSelect = () => {
           </SelectItem>
         </SelectContent>
       </Select>
-      <ConversationScrollArea />
+      <ConversationScrollArea
+        statusFilter={statusFilter}
+        setStatusFilter={setStatusFilter}
+      />
     </>
   );
 };

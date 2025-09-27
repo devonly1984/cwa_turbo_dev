@@ -44,3 +44,4 @@ export const accountItems = [
   },
 ];
 export const SIDEBAR_COOKIE_NAME = "sidebar_state";
+export const STATUS_FILTER_KEY = "echo-status-filter";

@@ -4,6 +4,6 @@ export type LayoutProps = {
 };
 
 export interface SidebarGroupsProps {
-  pathname?: string;
+
   isActive: (url: string) => boolean;
 }

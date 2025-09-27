@@ -9,12 +9,21 @@ import { usePathname } from "next/navigation";
 import {ConversationStatusIcon, DiceBearAvatar} from '@workspace/ui/components/shared'
  import { formatDistanceToNow } from "date-fns";
 import { CornerUpLeft } from "lucide-react";
-const ConversationScrollArea = () => {
+import { Doc } from "@workspace/backend/_generated/dataModel";
+
+interface ConversationScrollAreaProps {
+  statusFilter: Doc<"conversations">["status"] | "all" ;
+  setStatusFilter: (value: Doc<"conversations">["status"] | "all") => void;
+}
+const ConversationScrollArea = ({
+  statusFilter,
+  setStatusFilter,
+}: ConversationScrollAreaProps) => {
   const pathname = usePathname();
   const conversations = usePaginatedQuery(
     api.private.queries.conversations.getMany,
     {
-      status: "unresolved",
+      status: statusFilter === "all" ? undefined : statusFilter,
     },
     {
       initialNumItems: 10,
@@ -23,9 +32,10 @@ const ConversationScrollArea = () => {
   return (
     <ScrollArea className="max-h-[calc(100vh-53px)]">
       <div className="flex w-full flex-1 flex-col text-sm">
-        {conversations.results.map(conversation=>{
-          const isLastMessageFromOperator =
-            conversation?.lastMessage?.message?.role !== "user";
+        {conversations &&
+          conversations?.results?.map((conversation) => {
+            const isLastMessageFromOperator =
+              conversation?.lastMessage?.message?.role !== "user";
             const country = getCountryFromTimezone(
               conversation.contactSession.metadata?.timezone
             );
@@ -86,7 +96,7 @@ const ConversationScrollArea = () => {
                 </div>
               </Link>
             );
-        })}
+          })}
       </div>
     </ScrollArea>
   );
