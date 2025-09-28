@@ -10,6 +10,7 @@
 
 import type * as constants_index from "../constants/index.js";
 import type * as lib_convexUtils from "../lib/convexUtils.js";
+import type * as private_mutations_conversations from "../private/mutations/conversations.js";
 import type * as private_mutations_messages from "../private/mutations/messages.js";
 import type * as private_queries_conversations from "../private/queries/conversations.js";
 import type * as private_queries_messages from "../private/queries/messages.js";
@@ -22,8 +23,11 @@ import type * as public_queries_conversations from "../public/queries/conversati
 import type * as public_queries_messages from "../public/queries/messages.js";
 import type * as public_queries_users from "../public/queries/users.js";
 import type * as system_ai_agents_supportAgent from "../system/ai/agents/supportAgent.js";
-import type * as system_contactSessions from "../system/contactSessions.js";
-import type * as system_conversations from "../system/conversations.js";
+import type * as system_ai_agents_tools_escalateConversation from "../system/ai/agents/tools/escalateConversation.js";
+import type * as system_ai_agents_tools_resolveConversation from "../system/ai/agents/tools/resolveConversation.js";
+import type * as system_mutations_conversations from "../system/mutations/conversations.js";
+import type * as system_queries_contactSessions from "../system/queries/contactSessions.js";
+import type * as system_queries_conversations from "../system/queries/conversations.js";
 import type * as tables_contactSessions from "../tables/contactSessions.js";
 import type * as tables_conversations from "../tables/conversations.js";
 import type * as tables_index from "../tables/index.js";
@@ -46,6 +50,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   "constants/index": typeof constants_index;
   "lib/convexUtils": typeof lib_convexUtils;
+  "private/mutations/conversations": typeof private_mutations_conversations;
   "private/mutations/messages": typeof private_mutations_messages;
   "private/queries/conversations": typeof private_queries_conversations;
   "private/queries/messages": typeof private_queries_messages;
@@ -58,8 +63,11 @@ declare const fullApi: ApiFromModules<{
   "public/queries/messages": typeof public_queries_messages;
   "public/queries/users": typeof public_queries_users;
   "system/ai/agents/supportAgent": typeof system_ai_agents_supportAgent;
-  "system/contactSessions": typeof system_contactSessions;
-  "system/conversations": typeof system_conversations;
+  "system/ai/agents/tools/escalateConversation": typeof system_ai_agents_tools_escalateConversation;
+  "system/ai/agents/tools/resolveConversation": typeof system_ai_agents_tools_resolveConversation;
+  "system/mutations/conversations": typeof system_mutations_conversations;
+  "system/queries/contactSessions": typeof system_queries_contactSessions;
+  "system/queries/conversations": typeof system_queries_conversations;
   "tables/contactSessions": typeof tables_contactSessions;
   "tables/conversations": typeof tables_conversations;
   "tables/index": typeof tables_index;

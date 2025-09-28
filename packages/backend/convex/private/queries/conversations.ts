@@ -1,7 +1,7 @@
 import { MessageDoc } from "@convex-dev/agent";
 import { Doc } from "@workspace/backend/_generated/dataModel.js";
 import { query } from "@workspace/backend/_generated/server.js";
-import { getIdentity } from "@workspace/backend/lib/convexUtils.js";
+import { getIdentity, validateConversation } from "@workspace/backend/lib/convexUtils.js";
 import { supportAgent } from "@workspace/backend/system/ai/agents/supportAgent.js";
 import { paginationOptsValidator, PaginationResult } from "convex/server";
 import { ConvexError, v } from "convex/values";
@@ -9,20 +9,12 @@ export const getOne = query({
   args: { conversationId: v.id("conversations") },
   handler: async (ctx, {conversationId}) => {
     const { orgId } = await getIdentity(ctx);
-    const conversation = await ctx.db.get(conversationId);
+    const conversation = await validateConversation(
+      ctx,
+      orgId,
+      conversationId
+    );
 
-    if (!conversation) {
-      throw new ConvexError({
-        code: "NOT_FOUND",
-        message: "Conversation not found",
-      });
-    }
-    if (conversation.organizationId !==orgId) {
-      throw new ConvexError({
-        code: "UNAUTHORIZED",
-        message: "Invalid Organization ID"
-      })
-    }
     const contactSession = await ctx.db.get(conversation.contactSessionId);
     if (!contactSession) {
       throw new ConvexError({

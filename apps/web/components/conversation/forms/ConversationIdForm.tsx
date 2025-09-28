@@ -27,20 +27,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toUIMessages, useThreadMessages } from "@convex-dev/agent/react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
-import { Id } from "@workspace/backend/_generated/dataModel";
+import { Doc, Id,  } from "@workspace/backend/_generated/dataModel";
 import { DiceBearAvatar } from "@workspace/ui/components/shared";
 import { Wand2 } from "lucide-react";
 import { toast } from "sonner";
+import { useState } from "react";
 interface ConversationIdFormProps {
+  conversation: Doc<"conversations">;
   conversationId: Id<"conversations">;
 }
 const ConversationIdForm = ({
+  conversation,
   conversationId,
 }: ConversationIdFormProps) => {
-  const conversation = useQuery(api.private.queries.conversations.getOne, {
-    conversationId,
-  });
-  const isResolved = conversation?.status==='resolved'
+ 
+  const createMessage = useMutation(api.private.mutations.messages.create);
+  const isResolved = conversation?.status === "resolved";
   const messages = useThreadMessages(
     api.private.queries.messages.getMany,
     conversation?.threadId ? { threadId: conversation.threadId } : "skip",
@@ -52,19 +54,19 @@ const ConversationIdForm = ({
       message: "",
     },
   });
-  const createMessage = useMutation(api.private.mutations.messages.create);
+
   const onSubmit = async (values: ConversationIdViewSchema) => {
-   try {
-    await createMessage({
-      conversationId,
-      prompt: values.message,
-    });
-    IdForm.reset();
-   } catch (error) {
-    toast.error(`Something went wrong ${error}`);
-   }
+    try {
+      await createMessage({
+        conversationId,
+        prompt: values.message,
+      });
+      IdForm.reset();
+    } catch (error) {
+      toast.error(`Something went wrong ${error}`);
+    }
   };
- 
+
   return (
     <>
       <AIConversation className="max-h-[calc(100vh-180px)]">
@@ -117,7 +119,7 @@ const ConversationIdForm = ({
             />
             <AIInputToolbar>
               <AIInputTools>
-                <AIInputButton>
+                <AIInputButton disabled={isResolved}>
                   <Wand2 />
                   Enhance
                 </AIInputButton>

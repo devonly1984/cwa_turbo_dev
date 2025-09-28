@@ -37,3 +37,20 @@ export const validateSession = async (
   }
   return session;
 };
+export const validateConversation = async(ctx:QueryCtx|MutationCtx,orgId:string,conversationId:Id<'conversations'>)=>{
+   const conversation = await ctx.db.get(conversationId);
+    if (!conversation) {
+        throw new ConvexError({
+          code: "NOT_FOUND",
+          message: "Conversation not found",
+        });
+      }
+      if (conversation.organizationId!==orgId) {
+        throw new ConvexError({
+          code: "UNAUTHORIZED",
+          message: "Invalid organization Id",
+        });
+      }
+      return conversation;
+
+}

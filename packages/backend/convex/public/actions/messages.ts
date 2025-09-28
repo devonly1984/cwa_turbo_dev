@@ -3,7 +3,8 @@ import { action } from "@workspace/backend/_generated/server.js";
 import { getIdentity } from "@workspace/backend/lib/convexUtils.js";
 import { supportAgent } from "@workspace/backend/system/ai/agents/supportAgent.js";
 import { ConvexError, v } from "convex/values";
-
+import { resolveConversation } from "@workspace/backend/system/ai/agents/tools/resolveConversation.js";
+import { escalateConversation } from "@workspace/backend/system/ai/agents/tools/escalateConversation.js";
 export const create = action({
   args: {
     prompt: v.string(),
@@ -13,7 +14,7 @@ export const create = action({
   handler: async (ctx, args) => {
   const { orgId } = await getIdentity(ctx);
     const conversation = await ctx.runQuery(
-      internal.system.conversations.getByThreadId,
+      internal.system.queries.conversations.getByThreadId,
       {
         threadId: args.threadId,
       }
@@ -39,6 +40,10 @@ export const create = action({
       },
       {
         prompt: args.prompt,
+        tools: {
+          resolveConversation,
+          escalateConversation,
+        },
       }
     );
   },
