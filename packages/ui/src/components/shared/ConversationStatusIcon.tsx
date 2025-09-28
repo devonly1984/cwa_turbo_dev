@@ -8,8 +8,8 @@ interface ConversationStatusIconProps {
 const ConversationStatusIcon = ({
   status,
 }: ConversationStatusIconProps) => {
-const config = statusConfig[status];
-const Icon = config.icon
+  const config = statusConfig[status];
+  const Icon = config.icon;
   return (
     <div
       className={cn(

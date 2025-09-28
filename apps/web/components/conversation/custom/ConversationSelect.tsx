@@ -6,13 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@workspace/ui/components/select";
-import {
-  List,
-  ArrowRight,
-  ArrowUp,
-  Check,
- 
-} from "lucide-react";
+import { List, ArrowRight, ArrowUp, Check } from "lucide-react";
 import ConversationScrollArea from "./ConversationScrollArea";
 
 import { statusFilterAtom } from "@/constants/webAtoms";
@@ -20,7 +14,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { Doc } from "@workspace/backend/_generated/dataModel";
 const ConversationSelect = () => {
   const statusFilter = useAtomValue(statusFilterAtom);
-  const setStatusFilter = useSetAtom(statusFilterAtom)
+  const setStatusFilter = useSetAtom(statusFilterAtom);
 
   return (
     <>

@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useThreadMessages, toUIMessages } from "@convex-dev/agent/react";
 import { api } from "@workspace/backend/_generated/api";
-import { Id } from "@workspace/backend/_generated/dataModel";
+import { Doc, Id } from "@workspace/backend/_generated/dataModel";
 import {
   AIConversation,
   AIConversationContent,
@@ -33,7 +33,7 @@ interface WidgetChatScreenFormProps {
   conversation:
     | {
         _id: Id<"conversations">;
-        status: "unresolved" | "escalated" | "resolved";
+        status: Doc<"conversations">["status"];
         threadId: string;
       }
     | undefined;
@@ -74,7 +74,7 @@ const { topElementRef, handleLoadMore, canLoadMore, isLoadingMore } =
     await createMessage({
       threadId: conversation.threadId,
       prompt: values.message,
-      contactSessionId,
+   
     });
   }
   return (

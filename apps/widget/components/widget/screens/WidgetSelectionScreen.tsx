@@ -41,6 +41,7 @@ const WidgetSelectionScreen = () => {
         organizationId,
       });
       setConversationId(conversationId);
+      
       setScreen("chat");
     } catch (error) {
       setScreen("auth");

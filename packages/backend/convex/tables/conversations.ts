@@ -5,10 +5,12 @@ export default defineTable({
   threadId: v.string(),
   organizationId: v.string(),
   contactSessionId: v.id("contactSessions"),
-  status: v.union(
-    v.literal("unresolved"),
-    v.literal("escalated"),
-    v.literal("resolved")
+  status: v.optional(
+    v.union(
+      v.literal("unresolved"),
+      v.literal("escalated"),
+      v.literal("resolved")
+    )
   ),
 })
   .index("by_organization_id", ["organizationId"])

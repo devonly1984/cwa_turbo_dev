@@ -92,7 +92,6 @@ const WidgetLoadingScreen = ({
       contactSessionId,
     })
       .then((res) => {
-        console.log("Session res", res);
         setSessionValid(res.valid);
         setStep("done");
       })

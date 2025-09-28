@@ -1,6 +1,6 @@
+import ConversationsView from "@/components/conversation/views/ConversationsView"
+
 const ConversationsPage = () => {
-  return (
-    <div>ConversationsPage</div>
-  )
+  return <ConversationsView />;
 }
 export default ConversationsPage
