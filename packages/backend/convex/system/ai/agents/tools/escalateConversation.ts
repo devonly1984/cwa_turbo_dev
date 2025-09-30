@@ -20,7 +20,7 @@ export const escalateConversation: any = createTool({
       threadId: ctx.threadId,
       message: {
         role: "assistant",
-        content: "Conversation escalated",
+        content: "Conversation Escalated",
       },
     });
     return "Conversation Escalated";

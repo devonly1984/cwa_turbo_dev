@@ -1,6 +1,6 @@
 import { mutation } from "@workspace/backend/_generated/server.js";
 import { getIdentity, validateConversation } from "@workspace/backend/lib/convexUtils.js";
-import { ConvexError, v } from "convex/values";
+import {  ConvexError, v } from "convex/values";
 
 export const updateStatus = mutation({
   args: {
@@ -18,6 +18,12 @@ export const updateStatus = mutation({
       orgId,
       args.conversationId
     );
+    if (conversation.organizationId!==orgId) {
+      throw new ConvexError({
+        code: "UNAUTHORIZED",
+        message: "Invalid Organization Id",
+      });
+    }
     await ctx.db.patch(args.conversationId, {
       status: args.status,
     });

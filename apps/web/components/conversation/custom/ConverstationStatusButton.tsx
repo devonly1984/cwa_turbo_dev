@@ -1,7 +1,7 @@
 "use client"
 import { Doc } from "@workspace/backend/_generated/dataModel"
 import { Button } from "@workspace/ui/components/button";
-import Hint from "@workspace/ui/components/shared/Hint";
+import { Hint } from "@workspace/ui/components/shared/";
 import { ArrowRight, ArrowUp, Check } from "lucide-react";
 interface ConverstationStatusButtonProps {
   status: Doc<"conversations">["status"];
