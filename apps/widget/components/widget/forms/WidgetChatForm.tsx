@@ -13,7 +13,7 @@ import { chatFormSchema, ChatFormSchema } from "@/lib/schemas/ChatFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "convex/react";
 import {api} from '@workspace/backend/_generated/api'
-import { Doc, Id } from "@workspace/backend/_generated/dataModel";
+import { Doc } from "@workspace/backend/_generated/dataModel";
 import { useAtomValue, useSetAtom } from "jotai";
 import { contactSessionIdAtomFamily, organizationIdAtom, screenAtom } from "@/store/widgetAtoms";
 

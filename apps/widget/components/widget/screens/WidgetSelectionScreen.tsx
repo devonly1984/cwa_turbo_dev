@@ -44,6 +44,8 @@ const WidgetSelectionScreen = () => {
       
       setScreen("chat");
     } catch (error) {
+      console.log(error);
+
       setScreen("auth");
     } finally{
       setIsPending(false);

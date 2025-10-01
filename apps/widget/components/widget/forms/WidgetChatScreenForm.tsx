@@ -6,7 +6,7 @@ import { Doc, Id } from "@workspace/backend/_generated/dataModel";
 import {
   AIConversation,
   AIConversationContent,
-  AIConversationScrollButton,
+ 
 } from "@workspace/ui/components/ai/conversation";
 import {
   AIInput,
@@ -87,14 +87,14 @@ const { topElementRef, handleLoadMore, canLoadMore, isLoadingMore } =
             isLoadingMore={isLoadingMore}
             onLoadMore={handleLoadMore}
           />
-          {toUIMessages(messages.results ?? [])?.map((message: any) => {
+          {toUIMessages(messages.results ?? [])?.map((message) => {
             return (
               <AIMessage
                 from={message.role === "user" ? "user" : "assistant"}
                 key={message.id}
               >
                 <AIMessageContent>
-                  <AIResponse>{message.content}</AIResponse>
+                  <AIResponse>{message.text}</AIResponse>
                 </AIMessageContent>
                 {message.role === "assistant" && (
                   <DiceBearAvatar
