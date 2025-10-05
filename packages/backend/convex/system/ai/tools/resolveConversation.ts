@@ -1,7 +1,7 @@
 import { createTool } from "@convex-dev/agent";
 import z from "zod";
 import { internal } from "@workspace/backend/_generated/api.js";
-import { supportAgent } from "../supportAgent.js";
+import { supportAgent } from "../agents/supportAgent.js";
 
 export const resolveConversation: any = createTool({
   description: "Resolve a conversation",

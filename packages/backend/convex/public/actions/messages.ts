@@ -2,8 +2,8 @@ import { components, internal } from "@workspace/backend/_generated/api.js";
 import { action } from "@workspace/backend/_generated/server.js";
 import { getIdentity } from "@workspace/backend/lib/convexUtils.js";
 import { ConvexError, v } from "convex/values";
-import { resolveConversation } from "@workspace/backend/system/ai/agents/tools/resolveConversation.js";
-import { escalateConversation } from "@workspace/backend/system/ai/agents/tools/escalateConversation.js";
+import { resolveConversation } from "@workspace/backend/system/ai/tools/resolveConversation.js";
+import { escalateConversation } from "@workspace/backend/system/ai/tools/escalateConversation.js";
 import { saveMessage } from "@convex-dev/agent";
 import { supportAgent } from "@workspace/backend/system/ai/agents/supportAgent.js";
 export const create = action({

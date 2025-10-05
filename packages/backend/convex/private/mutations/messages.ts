@@ -19,12 +19,22 @@ export const create = mutation({
       conversationId
     );
 
-    if (conversation.status === "resolved")  {
-      throw new ConvexError({
-        code: "BAD_REQUEST",
-        message: "Conversation already resolved",
-      });
-    }
+   switch (conversation.status) {
+     case "unresolved":
+       await ctx.db.patch(conversationId, {
+         status: "escalated",
+       });
+       break;
+     case "resolved":
+       throw new ConvexError({
+         code: "BAD_REQUEST",
+         message: "Conversation already resolved",
+       });
+
+     default:
+       break;
+   }
+    
     //TODO: implement subscription check
 
    await saveMessage(ctx, components.agent, {
