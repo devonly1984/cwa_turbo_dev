@@ -4,6 +4,7 @@ import "@workspace/ui/globals.css"
 import { Providers } from "@/components/providers"
 import { ReactNode } from "react"
 import AuthGuard from "@/components/auth/guards/AuthGuard";
+import { Toaster } from "@workspace/ui/components/sonner";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -27,7 +28,10 @@ const RootLayout=({
       >
         <ClerkProvider>
           <Providers>
-            <AuthGuard>{children}</AuthGuard>
+            <AuthGuard>
+              <Toaster />
+              {children}
+            </AuthGuard>
           </Providers>
         </ClerkProvider>
       </body>

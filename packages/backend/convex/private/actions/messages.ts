@@ -3,6 +3,7 @@ import { getIdentity } from "@workspace/backend/lib/convexUtils.js";
 import { v } from "convex/values";
 import {generateText} from "ai"
 import {openai} from '@ai-sdk/openai'
+import { OPERATOR_MESSAGE_ENHANCEMENT_PROMPT } from "@workspace/backend/constants/index.js";
 export const enhanceResponse = action({
   args: {
     prompt: v.string(),
@@ -15,8 +16,7 @@ export const enhanceResponse = action({
       messages: [
         {
           role: "system",
-          content:
-            "Enhance the operators message to be more professional,clear and helpful while maintaining their intent and key information",
+          content: OPERATOR_MESSAGE_ENHANCEMENT_PROMPT,
         },
         {
           role: "user",

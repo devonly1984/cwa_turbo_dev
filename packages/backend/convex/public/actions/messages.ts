@@ -6,6 +6,7 @@ import { resolveConversation } from "@workspace/backend/system/ai/tools/resolveC
 import { escalateConversation } from "@workspace/backend/system/ai/tools/escalateConversation.js";
 import { saveMessage } from "@convex-dev/agent";
 import { supportAgent } from "@workspace/backend/system/ai/agents/supportAgent.js";
+import { search } from "@workspace/backend/system/ai/tools/search.js";
 export const create = action({
   args: {
     prompt: v.string(),
@@ -37,7 +38,7 @@ const shouldTriggerAgent = conversation.status === "unresolved";
 if (shouldTriggerAgent) {
     await supportAgent.generateText(
       ctx,
-     
+
       {
         threadId: args.threadId,
       },
@@ -46,6 +47,7 @@ if (shouldTriggerAgent) {
         tools: {
           resolveConversation,
           escalateConversation,
+          search,
         },
       }
     );} else {
